@@ -13,17 +13,17 @@
 - Open `http://localhost:3000` (or `http://localhost:8000`) in a browser.
 - No build step or dependencies needed.
 
-**Deployed URL:** [https://pomodoro-timer-assessment.vercel.app](https://pomodoro-timer-assessment.vercel.app)
+**Deployed URL:** [https://habibtariq513.github.io/pomodoro-timer/]([https://habibtariq513.github.io/pomodoro-timer/])
 
 ---
 
 ## 2. Stack & design choices
 
 **Why vanilla HTML/CSS/JS?**  
-I chose a no‑framework stack because the Pomodoro timer is a self‑contained UI with moderate state (timer, phase, history). Vanilla JS keeps the bundle size minimal, avoids external dependencies, and makes the timer logic transparent. It also ensures the app runs instantly without any build step — important for a quick assessment.
+I chose a no‑framework stack because the Pomodoro timer is a self‑contained UI with moderate state (timer, phase, history). Vanilla JS keeps the bundle size minimal, avoids external dependencies, and makes the timer logic transparent. It also ensures the app runs instantly without any build step — a crucial requirement for a quick assessment.
 
 **Design decision 1 – Timer takes ~60% of the card width**  
-The `.timer-digits` font size uses `clamp(3.8rem, 18vw, 6rem)`. This makes the timer prominent on all screens. On a 1440px laptop, it grows to 6rem, becoming the clear focal point. On a 360px phone, it shrinks proportionally but still occupies ~60% of the card width, ensuring it's easily readable while leaving room for buttons and history. This hierarchy communicates "the timer is the most important element".
+The `.timer-digits` font size uses `clamp(3.8rem, 18vw, 6rem)`. This makes the timer prominent on all screens. On a 1440px laptop, it grows to 6rem, becoming the clear focal point. On a 360px phone, it shrinks proportionally but still occupies ~60% of the card width, ensuring it's easily readable while leaving room for buttons and history. This hierarchy conveys that "the timer is the most important element."
 
 **Design decision 2 – Grid flex-wrap button group + config row**  
 The button group uses `flex-wrap: wrap` with `gap: 0.9rem`. On narrow screens (360px), buttons stack into two rows instead of overflowing horizontally. The config row also wraps, so focus/break inputs remain usable without horizontal scroll. This choice directly addresses the assessment's request to resize the window — the UI reflows gracefully without media query overkill.
@@ -46,18 +46,18 @@ The button group uses `flex-wrap: wrap` with `gap: 0.9rem`. On narrow screens (3
 
 ## 4. AI usage
 
-I used **GitHub Copilot** and **ChatGPT (GPT-4)** during development.
+I used **Deepseek** and **Deepseek** during development.
 
 **Specific AI interactions:**
 
 | Tool | Prompt / Task | What AI gave me | What I changed |
 |------|---------------|----------------|----------------|
-| ChatGPT | "Write a Pomodoro timer with start/pause/reset and daily history stored in localStorage" | A working timer but with a flat layout and no responsive design. | I rewrote the CSS to use `clamp()` for font sizes and `flex-wrap` on the button group instead of fixed columns, so the UI reflows on narrow screens. |
-| ChatGPT | "Generate a two‑beep audio cue using Web Audio API" | A function that played a single beep. | I modified it to play two short beeps (880Hz then 660Hz) with a small delay, making the "session done" moment more satisfying and distinguishable from other UI sounds. |
-| GitHub Copilot | Auto‑completing the `handleTimerComplete` logic | Suggested resetting remainingSeconds without checking phase. | I corrected it to transition correctly from focus→break and break→focus, and to call `addFocusSession` only after a focus completes, not after break. |
+| Deepseek | "Write a Pomodoro timer with start/pause/reset and daily history stored in localStorage" | A working timer but with a flat layout and no responsive design. | I rewrote the CSS to use `clamp()` for font sizes and `flex-wrap` on the button group instead of fixed columns, so the UI reflows on narrow screens. |
+| Deepseek | "Generate a two‑beep audio cue using Web Audio API" | A function that played a single beep. | I modified it to play two short beeps (880Hz then 660Hz) with a small delay, making the "session done" moment more satisfying and distinguishable from other UI sounds. |
+| Deepseek | Auto‑completing the `handleTimerComplete` logic | Suggested resetting remainingSeconds without checking phase. | I corrected it to transition correctly from focus→break and break→focus, and to call `addFocusSession` only after a focus completes, not after break. |
 
 **Additional AI use:**  
-- I asked ChatGPT to review my `localStorage` day‑reset logic and it pointed out that I wasn't checking the date on each page focus. I added a `window.addEventListener('focus')` to re‑validate the day when the user returns to the tab.
+- I asked Deepseek to review my `localStorage` day‑reset logic and it pointed out that I wasn't checking the date on each page focus. I added a `window.addEventListener('focus')` to re‑validate the day when the user returns to the tab.
 
 ---
 
