@@ -53,7 +53,7 @@ I used **Deepseek** during development.
 | Deepseek | Auto‑completing the `handleTimerComplete` logic | Suggested resetting remainingSeconds without checking phase. | I corrected it to transition correctly from focus→break and break→focus, and to call `addFocusSession` only after a focus completes, not after break. |
 
 **Additional AI use:**  
-- I asked ChatGPT to review my `localStorage` day‑reset logic and it pointed out that I wasn't checking the date on each page focus. I added a `window.addEventListener('focus')` to re‑validate the day when the user returns to the tab.
+- I asked Deepseek to review my `localStorage` day‑reset logic and it pointed out that I wasn't checking the date on each page focus. I added a `window.addEventListener('focus')` to re‑validate the day when the user returns to the tab.
 
 ---
 
