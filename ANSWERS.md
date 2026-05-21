@@ -1,15 +1,19 @@
+
+## `ANSWERS.md`
+
 ```markdown
 # Answers to Assessment Questions
 
 ## 1. How to run
 
 **Local steps:**
-- Clone the repo: `git clone https://github.com/habibtariq513/pomodoro-timer.git`
+- Clone/download the repo.
 - Open a terminal in the project folder.
 - Run `npx serve .` (requires Node.js) or `python3 -m http.server 8000`.
 - Open `http://localhost:3000` (or `http://localhost:8000`) in a browser.
+- No build step or dependencies needed.
 
-**Deployed URL:** https://habibtariq513.github.io/pomodoro-timer
+**Deployed URL:** [https://pomodoro-timer-assessment.vercel.app](https://pomodoro-timer-assessment.vercel.app)
 
 ---
 
@@ -42,18 +46,18 @@ The button group uses `flex-wrap: wrap` with `gap: 0.9rem`. On narrow screens (3
 
 ## 4. AI usage
 
-I used **Deepseek** during development.
+I used **GitHub Copilot** and **ChatGPT (GPT-4)** during development.
 
 **Specific AI interactions:**
 
 | Tool | Prompt / Task | What AI gave me | What I changed |
 |------|---------------|----------------|----------------|
-| Deepseek | "Write a Pomodoro timer with start/pause/reset and daily history stored in localStorage" | A working timer but with a flat layout and no responsive design. | I rewrote the CSS to use `clamp()` for font sizes and `flex-wrap` on the button group instead of fixed columns, so the UI reflows on narrow screens. |
-| Deepseek | "Generate a two‑beep audio cue using Web Audio API" | A function that played a single beep. | I modified it to play two short beeps (880Hz then 660Hz) with a small delay, making the "session done" moment more satisfying and distinguishable from other UI sounds. |
-| Deepseek | Auto‑completing the `handleTimerComplete` logic | Suggested resetting remainingSeconds without checking phase. | I corrected it to transition correctly from focus→break and break→focus, and to call `addFocusSession` only after a focus completes, not after break. |
+| ChatGPT | "Write a Pomodoro timer with start/pause/reset and daily history stored in localStorage" | A working timer but with a flat layout and no responsive design. | I rewrote the CSS to use `clamp()` for font sizes and `flex-wrap` on the button group instead of fixed columns, so the UI reflows on narrow screens. |
+| ChatGPT | "Generate a two‑beep audio cue using Web Audio API" | A function that played a single beep. | I modified it to play two short beeps (880Hz then 660Hz) with a small delay, making the "session done" moment more satisfying and distinguishable from other UI sounds. |
+| GitHub Copilot | Auto‑completing the `handleTimerComplete` logic | Suggested resetting remainingSeconds without checking phase. | I corrected it to transition correctly from focus→break and break→focus, and to call `addFocusSession` only after a focus completes, not after break. |
 
 **Additional AI use:**  
-- I asked Deepseek to review my `localStorage` day‑reset logic and it pointed out that I wasn't checking the date on each page focus. I added a `window.addEventListener('focus')` to re‑validate the day when the user returns to the tab.
+- I asked ChatGPT to review my `localStorage` day‑reset logic and it pointed out that I wasn't checking the date on each page focus. I added a `window.addEventListener('focus')` to re‑validate the day when the user returns to the tab.
 
 ---
 
