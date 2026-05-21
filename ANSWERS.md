@@ -42,15 +42,15 @@ The button group uses `flex-wrap: wrap` with `gap: 0.9rem`. On narrow screens (3
 
 ## 4. AI usage
 
-I used **GitHub Copilot** and **ChatGPT (GPT-4)** during development.
+I used **Deepseek** during development.
 
 **Specific AI interactions:**
 
 | Tool | Prompt / Task | What AI gave me | What I changed |
 |------|---------------|----------------|----------------|
-| ChatGPT | "Write a Pomodoro timer with start/pause/reset and daily history stored in localStorage" | A working timer but with a flat layout and no responsive design. | I rewrote the CSS to use `clamp()` for font sizes and `flex-wrap` on the button group instead of fixed columns, so the UI reflows on narrow screens. |
-| ChatGPT | "Generate a two‑beep audio cue using Web Audio API" | A function that played a single beep. | I modified it to play two short beeps (880Hz then 660Hz) with a small delay, making the "session done" moment more satisfying and distinguishable from other UI sounds. |
-| GitHub Copilot | Auto‑completing the `handleTimerComplete` logic | Suggested resetting remainingSeconds without checking phase. | I corrected it to transition correctly from focus→break and break→focus, and to call `addFocusSession` only after a focus completes, not after break. |
+| Deepseek | "Write a Pomodoro timer with start/pause/reset and daily history stored in localStorage" | A working timer but with a flat layout and no responsive design. | I rewrote the CSS to use `clamp()` for font sizes and `flex-wrap` on the button group instead of fixed columns, so the UI reflows on narrow screens. |
+| Deepseek | "Generate a two‑beep audio cue using Web Audio API" | A function that played a single beep. | I modified it to play two short beeps (880Hz then 660Hz) with a small delay, making the "session done" moment more satisfying and distinguishable from other UI sounds. |
+| Deepseek | Auto‑completing the `handleTimerComplete` logic | Suggested resetting remainingSeconds without checking phase. | I corrected it to transition correctly from focus→break and break→focus, and to call `addFocusSession` only after a focus completes, not after break. |
 
 **Additional AI use:**  
 - I asked ChatGPT to review my `localStorage` day‑reset logic and it pointed out that I wasn't checking the date on each page focus. I added a `window.addEventListener('focus')` to re‑validate the day when the user returns to the tab.
