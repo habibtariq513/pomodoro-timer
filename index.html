@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Pomodoro Flow · Focus Timer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="timer-card" role="main" aria-label="Pomodoro timer application">
+        <!-- dynamic phase + status -->
+        <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap;">
+            <div class="phase-badge" id="phaseBadge">🍅 FOCUS MODE</div>
+            <div class="state-indicator" id="stateIndicator">● IDLE</div>
+        </div>
+
+        <div class="timer-wrap">
+            <div class="timer-digits" id="timerDisplay">25:00</div>
+            <div class="phase-label" id="phaseLabel">Focus time</div>
+        </div>
+
+        <!-- control buttons -->
+        <div class="button-group">
+            <button class="btn btn-primary" id="startBtn" aria-label="Start timer">▶ Start</button>
+            <button class="btn btn-outline" id="pauseBtn" aria-label="Pause timer">⏸ Pause</button>
+            <button class="btn btn-outline" id="resumeBtn" aria-label="Resume timer">⏵ Resume</button>
+            <button class="btn btn-reset" id="resetBtn" aria-label="Reset timer">⟳ Reset</button>
+        </div>
+
+        <!-- configurable durations -->
+        <div class="config-row">
+            <div class="config-item">
+                <label>🍅 Focus</label>
+                <input type="number" id="focusInput" min="1" max="99" value="25" step="1">
+                <span>min</span>
+            </div>
+            <div class="config-item">
+                <label>☕ Break</label>
+                <input type="number" id="breakInput" min="1" max="99" value="5" step="1">
+                <span>min</span>
+            </div>
+        </div>
+
+        <!-- daily history -->
+        <div class="history-section">
+            <div class="history-title">
+                📋 Today's completed focus sessions
+                <span style="font-size: 0.75rem;">(resets at midnight)</span>
+            </div>
+            <div id="historyListContainer" class="history-list">
+                <div class="empty-history">✨ No pomodoros yet. Start a focus session!</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
